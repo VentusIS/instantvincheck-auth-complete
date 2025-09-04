@@ -2,17 +2,20 @@ import "../globals.css";
 import I18nProvider from "@/app/i18n-provider";
 import { Toaster } from "sonner";
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
+
   return (
-    <I18nProvider locale={params.locale}>
+    <I18nProvider locale={locale}>
       {children}
       <Toaster />
     </I18nProvider>
   );
 }
+

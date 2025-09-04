@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: "Create your account",
 };
 
-export default function Page({ params }: { params: { locale: string } }) {
-  return <RegisterClient params={params} />;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return <RegisterClient params={{ locale }} />;
 }

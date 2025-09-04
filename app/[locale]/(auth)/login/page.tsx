@@ -6,7 +6,17 @@ export const metadata: Metadata = {
   description: "Sign in to your account",
 };
 
-export default function Page({ params }: { params: { locale: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   const serverTranslations = {} as any;
-  return <LoginClient params={params} serverTranslations={serverTranslations} />;
+  return (
+    <LoginClient
+      params={{ locale }}
+      serverTranslations={serverTranslations}
+    />
+  );
 }
