@@ -1,20 +1,33 @@
+// lib/features/filterDataSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 type Option = { id?: string | number; name?: string } | string;
 
+/**
+ * Fetch manufacturers list
+ * (Placeholder implementation; replace with real API call when ready.)
+ */
 export const fetchManufacturers = createAsyncThunk<Option[]>(
   "filterData/fetchManufacturers",
   async () => {
-    // TODO: replace with real API call if needed
-    // e.g., const res = await api.get("/manufacturers"); return res.data;
+    // Example:
+    // const res = await api.get("/manufacturers");
+    // return res.data;
     return [];
   }
 );
 
-export const fetchModels = createAsyncThunk<Option[], { manufacturer?: string | number } | void>(
+/**
+ * Fetch models list
+ * Your existing hook calls: dispatch(fetchModels([]))
+ * To be compatible, we allow any arg type here ([], { manufacturer }, undefined).
+ */
+export const fetchModels = createAsyncThunk<Option[], any | void>(
   "filterData/fetchModels",
   async (_arg) => {
-    // TODO: replace with real API call if needed
+    // Example:
+    // const res = await api.get("/models", { params: _arg });
+    // return res.data;
     return [];
   }
 );
@@ -56,7 +69,7 @@ const filterDataSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // manufacturers
+    // --- manufacturers ---
     builder
       .addCase(fetchManufacturers.pending, (state) => {
         state.loading.manufacturers = true;
@@ -76,7 +89,7 @@ const filterDataSlice = createSlice({
           "Failed";
       });
 
-    // models
+    // --- models ---
     builder
       .addCase(fetchModels.pending, (state) => {
         state.loading.models = true;
