@@ -13,7 +13,6 @@ export default async function Page({
 }) {
   const { locale } = await params;
 
-  // fallback feature cards
   const featureCards: { title: string; desc: string }[] = [
     { title: "🚗 Accident Records", desc: "See if the vehicle has been in any reported accidents or collisions." },
     { title: "📜 Title Check", desc: "Verify ownership status and ensure it’s not a salvage or rebuilt vehicle." },

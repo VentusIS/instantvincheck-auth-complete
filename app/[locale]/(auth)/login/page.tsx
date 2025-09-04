@@ -13,6 +13,7 @@ export default async function Page({
 }) {
   const { locale } = await params;
   const serverTranslations = {} as any;
+
   return (
     <LoginClient
       params={{ locale }}
